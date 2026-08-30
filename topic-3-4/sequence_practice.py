@@ -20,6 +20,14 @@ print(report)
 
 #I think it will print report and list out the scores for the weekly report
 
-label = title[0:6] + " : " + str(scores[0])
+label = title[0:6] + " : " + str(len(scores))
 print(label)
 print("report:", label, scores)
+
+print("Last item:", scores[len(scores) - 1])
+
+lax_goals = [3, 5, 2]
+lax_title = "lacrosse stats"
+lax_goals.append(4)
+lax_label = lax_title[0:8] + " : " + str(len(lax_goals))
+print(lax_label, lax_goals)
