@@ -55,6 +55,3 @@ check_value = (bits[0] * 32) + (bits[1] * 16) + (bits[2] * 8) + (bits[3] * 4) + 
 print(label + ": " + str(clock_value) + " -> " + bit_text)
 print("Original:", clock_value, "| Reconstructed Check:", check_value)
 
-# Test selected_index = 2 (seconds: 17): Expected '010001', Actual matches too
-# Test selected_index = 1 (minutes: 42): Expected '101010', Actual matches as well
-# Test selected_index = 0 (hours: 13): Expected '001101', Actual matches
