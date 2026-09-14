@@ -34,19 +34,17 @@ bits = [0, 0, 0, 0, 0, 0]
 
 remaining = clock_value
 
-bit_1 = remaining % 2
+bits[5] = remaining % 2
 remaining = remaining // 2
-bit_2 = remaining % 2
+bits[4] = remaining % 2
 remaining = remaining // 2
-bit_4 = remaining % 2
+bits[3] = remaining % 2
 remaining = remaining // 2
-bit_8 = remaining % 2
+bits[2] = remaining % 2
 remaining = remaining // 2
-bit_16 = remaining % 2
+bits[1] = remaining % 2
 remaining = remaining // 2
-bit_32 = remaining % 2
-
-bits = [bit_32, bit_16, bit_8, bit_4, bit_2, bit_1]
+bits[0] = remaining % 2
 
 bit_text = str(bits[0]) + str(bits[1]) + str(bits[2]) + str(bits[3]) + str(bits[4]) + str(bits[5])
 

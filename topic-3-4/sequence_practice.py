@@ -1,4 +1,4 @@
-scores = [72, 85,91, 68, 88]
+scores = [72, 85, 91, 68, 88]
 title = "weekly score report"
 
 scores[1] = 86
@@ -6,7 +6,7 @@ scores[1] = 86
 #I changed the 85 to 86 by changing the variables value
 
 print(scores[0])
-print(scores[1])
+print(scores[2])
 print(scores[4])
 
 scores.append(93)
