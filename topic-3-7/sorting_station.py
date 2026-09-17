@@ -1,20 +1,31 @@
 label = input()
-shape = label[0:4]
-color = label[4:7]
-size = int(label[7:10])
-mass = int(label[10:14])
-condition = label[14]
+shape = label[0:4]  # Ball, cube, cone
+color = label[4:7]  #
+size = int(label[7:10])  # legnth
+mass = int(label[10:14])  # Mass (G)
+condition = label[14]  # Normal or damaged
 
-#Two equal signs
+# One equal sign because destination is being defined as unknown
 destination = "unknown"
 
 if condition == "D" or size > 50 or mass > 2000:
     destination = "INSPECT"
 
+else:
+    if shape == "BALL":
+        if color == "RED" and size > 10:
+            destination = "B"
+
+        else:
+            destination = "A"
+    else:
+        if shape == "CUBE":
+            if color == ("BLU" or "GRN") and size <= 10:
+                destination = "C"
+    else: 
+
+
 print(destination)
-print("shape: " + shape)
-print("size: " + str(size))
-print("mass: " + str(mass))
 
 
-#Use " " for ball if its a string
+# Use " " for ball if its a string
