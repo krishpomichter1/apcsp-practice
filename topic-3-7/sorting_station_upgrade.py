@@ -1,12 +1,16 @@
 label = input()
 shape = label[0:4]  # Ball, cube, cone
 color = label[4:7]  # Blue, green, red
-size = int(label[7:10])  # legnth
+size = int(label[7:10])  # length
 mass = int(label[10:14])  # Mass (G)
 condition = label[14]  # Normal or damaged
 
 # One equal sign because destination is being defined as unknown
 destination = "unknown"
+eliminate = "FALSE"
+
+if(shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition =="N"):
+    exclude = "TRUE"
 
 if condition == "D" or size > 50 or mass > 2000:
     destination = "INSPECT"
