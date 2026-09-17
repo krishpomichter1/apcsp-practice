@@ -28,3 +28,24 @@ else:
             destination = "E"
 
 print(destination)
+
+packaging = "temp"
+
+if destination == "INSPECT":
+    packaging = "HOLD"
+else:
+    if shape == "CONE" or mass > 1000:
+        packaging = "CRATE"
+    else:
+        if shape == "BALL":
+            packaging = "PADDED"
+        else:
+            packaging = "BOX"
+print(packaging)
+            
+
+
+
+# Use " " for ball if its a string
+
+
