@@ -7,10 +7,10 @@ condition = label[14]  # Normal or damaged
 
 # One equal sign because destination is being defined as unknown
 destination = "unknown"
-eliminate = "FALSE"
+eliminate = False
 
 if(shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition == "N"):
-    exclude = "TRUE"
+    exclude =  True
 
 if condition == "D" or size > 50 or mass > 2000:
     destination = "INSPECT"
