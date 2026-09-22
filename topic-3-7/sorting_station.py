@@ -20,7 +20,7 @@ else:
             destination = "A"
     else:
         if shape == "CUBE":
-            if color == ("BLU" or "GRN") and size <= 10:
+            if (color == "BLU" or color == "GRN") and size <= 10:
                 destination = "C"
             else: 
                 destination = "D"

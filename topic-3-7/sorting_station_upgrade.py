@@ -9,7 +9,7 @@ condition = label[14]  # Normal or damaged
 destination = "unknown"
 eliminate = "FALSE"
 
-if(shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition =="N"):
+if(shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition == "N"):
     exclude = "TRUE"
 
 if condition == "D" or size > 50 or mass > 2000:
@@ -24,7 +24,7 @@ else:
             destination = "A"
     else:
         if shape == "CUBE":
-            if color == ("BLU" or "GRN") and size <= 10:
+            if (color == "BLU" or color == "GRN") and size <= 10:
                 destination = "C"
             else: 
                 destination = "D"
