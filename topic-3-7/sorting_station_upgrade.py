@@ -7,29 +7,31 @@ condition = label[14]  # Normal or damaged
 
 # One equal sign because destination is being defined as unknown
 destination = "unknown"
-eliminate = False
 
-if(shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition == "N"):
-    exclude =  True
+exclude = False
 
-if condition == "D" or size > 50 or mass > 2000:
+if (shape == "CUBE") and (size <= 60) and (mass <= 2500) and (condition == "N"):
+    exclude = True
+
+if condition == "D":
     destination = "INSPECT"
-
 else:
-    if shape == "BALL":
-        if color == "RED" and size > 10:
-            destination = "B"
-
-        else:
-            destination = "A"
+    if (size > 50 or mass > 2000) and exclude == False:
+        destination = "INSPECT"
     else:
-        if shape == "CUBE":
-            if (color == "BLU" or color == "GRN") and size <= 10:
-                destination = "C"
-            else: 
-                destination = "D"
-        else: 
-            destination = "E"
+        if shape == "BALL":
+            if (color == "RED") and (size > 10):
+                destination = "B"
+            else:
+                destination = "A"
+        else:
+            if shape == "CUBE":
+                if (color == "BLU" or color == "GRN") and size <= 10:
+                    destination = "C"
+                else:
+                    destination = "D"
+            else:
+                destination = "E"
 
 print(destination)
 

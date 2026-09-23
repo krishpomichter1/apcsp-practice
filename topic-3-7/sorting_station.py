@@ -13,7 +13,7 @@ if condition == "D" or size > 50 or mass > 2000:
 
 else:
     if shape == "BALL":
-        if color == "RED" and size > 10:
+        if (color == "RED") and (size > 10):
             destination = "B"
 
         else:
