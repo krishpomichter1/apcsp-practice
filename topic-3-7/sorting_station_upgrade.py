@@ -48,8 +48,6 @@ else:
         else:
             packaging = "BOX"
 print(packaging)
-            
-
 
 
 # Use " " for ball if its a string
