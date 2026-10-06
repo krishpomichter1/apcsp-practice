@@ -30,8 +30,59 @@ print("Peak:", peak)
 
 print("Final value:", value)
 
+# ADVANCED: 3n - 1 variation
 
-# TESTS:
+start = 5
+value = start
+steps = 0
 
-# 1, 6, 7, 27, 999999, and 6 with 5 step limit
-# ALL WORKED
+print("Advanced test:")
+print(value)
+
+while steps < 1000 and value <= 1000000:
+    if value % 2 == 0:
+        value = value // 2
+    else:
+        value = 3 * value - 1
+
+    steps = steps + 1
+    print(value)
+
+    if value == start:
+        break
+
+if value == start:
+    print("CYCLE FOUND")
+else:
+    print("LIMIT REACHED")
+
+# Test: 5 -> 14 -> 7 -> 20 -> 10 -> 5
+
+# ADVANCED: cycle detector limit
+
+start = 3
+value = start
+steps = 0
+
+print("Advanced limit test:")
+print(value)
+
+while steps < 1000 and value <= 1000000:
+    if value % 2 == 0:
+        value = value // 2
+    else:
+        value = 3 * value - 1
+
+    steps = steps + 1
+    print(value)
+
+    if value == start:
+        break
+
+if value == start:
+    print("CYCLE FOUND")
+else:
+    print("LIMIT REACHED")
+
+# Test: 3 enters the cycle 2 -> 1 -> 2 without returning to 3,
+# so the detector reaches its limit.
