@@ -1,37 +1,21 @@
-value = 6
-steps = 0
+value = 999999
+steps = e 
 peak = value
-
-print(value)
-
-while value != 1 and steps < 1000 and value <= 1000000:
+while value !=  1:
     if value % 2 == 0:
         value = value // 2
+        steps = steps + 1
+        if value > peak:
+            peak = value
     else:
-        value = 3 * value + 1
-    
-    steps = steps + 1
-    print(value)
-
-    if value > peak:
-        peak = value
-
-if value == 1:
-
-    print("REACHED 1")
-
-else:
-
+        value = 3*value + 1
+        steps = steps + 1
+        if value > peak:
+            peak = value
+print(value)
+print(steps)
+print(peak)
+if (steps > 1000) or (peak > 1000000):
     print("LIMIT REACHED")
-
-print("Transformations:", steps)
-
-print("Peak:", peak)
-
-print("Final value:", value)
-
-
-# TESTS:
-
-# 1, 6, 7, 27, 999999, and 6 with 5 step limit
-# ALL WORKED
+else:
+    print("REACHED 1")
