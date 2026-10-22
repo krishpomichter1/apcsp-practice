@@ -7,6 +7,55 @@ def clamp(value, minimum, maximum):
         value = maximum
     return value
 
+def make_bar(current, maximum, width):
+    filled = current * width // maximum
+    bar = "["
+    for position in range(width):
+        if position < filled:
+            bar = bar + "#"
+        else:
+            bar = bar + "-"
+    bar = bar + "]"
+    return bar
+
+def format_duration(seconds):
+    minutes = seconds // 60
+    remainder = seconds % 60
+    text = str(minutes) + ":"
+    if remainder < 10:
+        text = text + "0"
+    text = text + str(remainder)
+    return text
+
+def add_all(scores):
+    total = 0
+    for score in scores:
+        total = total + score
+    return total
+
+def find_highest(scores):
+    highest = scores[0]
+    for score in scores:
+        if score > highest:
+            highest = score
+    return highest
+
+def count_at_least(scores, threshold):
+    count = 0
+    for score in scores:
+        if score >= threshold:
+            count = count + 1
+    return count
+
+def choose_level(total):
+    if total < 100:
+        level = "Rookie"
+    elif total < 250:
+        level = "Skilled"
+    else:
+        level = "Expert"
+    return level
+
 def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
     # Keep this function's name, parameters, and returned report.
     # Add your own helper functions above it.
@@ -17,26 +66,11 @@ def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
 
 
     # Build two bars. // keeps the whole-number part of the division.
-    health_filled = shown_health * 10 // 100
-    health_bar = "["
-    for position in range(10):
-        if position < health_filled:
-            health_bar = health_bar + "#"
-        else:
-            health_bar = health_bar + "-"
-    health_bar = health_bar + "]"
-
-    energy_filled = shown_energy * 10 // 60
-    energy_bar = "["
-    for position in range(10):
-        if position < energy_filled:
-            energy_bar = energy_bar + "#"
-        else:
-            energy_bar = energy_bar + "-"
-    energy_bar = energy_bar + "]"
+    
+    health_bar = make_bar(shown_health, 100, 10)
+    energy_bar = make_bar(shown_energy, 60, 10)
 
     # Format two durations.
-
     elapsed_text = format_duration(elapsed_seconds)
     best_text = format_duration(best_seconds)
 
@@ -48,12 +82,7 @@ def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
     strong_count = count_at_least(scores, strong_threshold)
 
     # Choose a level from the total.
-    if total < 100:
-        level = "Rookie"
-    elif total < 250:
-        level = "Skilled"
-    else:
-        level = "Expert"
+    level = choose_level(total)
 
     # Return one report. \n separates its lines; there is no final \n.
     report = "PLAYER: " + name
