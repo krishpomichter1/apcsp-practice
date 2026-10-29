@@ -18,7 +18,12 @@ def make_bar(current, maximum, width):
     bar = bar + "]"
     return bar
 
-def format_duration(seconds):
+def meter_line(label, value, maximum):
+    shown = clamp(value, 0, maximum)
+    bar = make_bar(shown, maximum, 10)
+    return label + bar + " " + str(shown) + "/" + str(maximum)
+
+def format_time(seconds):
     minutes = seconds // 60
     remainder = seconds % 60
     text = str(minutes) + ":"
@@ -61,18 +66,13 @@ def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
     # Add your own helper functions above it.
 
     # Bound the two meters.
-    shown_health = clamp(health, 0, 100)
-    shown_energy = clamp(energy, 0, 60)
-
-
     # Build two bars. // keeps the whole-number part of the division.
-    
-    health_bar = make_bar(shown_health, 100, 10)
-    energy_bar = make_bar(shown_energy, 60, 10)
+    health_line = meter_line("Health  ", health, 100)
+    energy_line = meter_line("Energy  ", energy, 60)
 
     # Format two durations.
-    elapsed_text = format_duration(elapsed_seconds)
-    best_text = format_duration(best_seconds)
+    elapsed_text = format_time(elapsed_seconds)
+    best_text = format_time(best_seconds)
 
 
     # Summarize the recent scores.
@@ -86,8 +86,8 @@ def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
 
     # Return one report. \n separates its lines; there is no final \n.
     report = "PLAYER: " + name
-    report = report + "\nHealth  " + health_bar + " " + str(shown_health) + "/100"
-    report = report + "\nEnergy  " + energy_bar + " " + str(shown_energy) + "/60"
+    report = report + "\n" + health_line
+    report = report + "\n" + energy_line
     report = report + "\nLevel:  " + level
     report = report + "\nTime:   " + elapsed_text
     report = report + "\nBest:   " + best_text
